@@ -1,0 +1,4 @@
+aiogram~=2.11.2
+pyffmpeg~=2.0.1
+SpeechRecognition~=3.8.1
+environs~=9.3.2

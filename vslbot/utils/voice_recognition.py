@@ -1,8 +1,9 @@
-import speech_recognition as sr
 from os import path
-from pyffmpeg import FFmpeg
 
-voice_message = "real.ogg"
+import logging
+
+import speech_recognition as sr
+from pyffmpeg import FFmpeg
 
 def voice_to_text(voice_file: str) -> None:
     voice_message_name = voice_message.split('.')[0]
@@ -21,6 +22,5 @@ def voice_to_text(voice_file: str) -> None:
         print(r.recognize_google(audio, language="ru-RU"))
     except sr.UnknownValueError:
         print("Ничего не понятно =(")
-    except sr.RequestError as e:
-        print(f"Что-то пошло не так... {e}")
-voice_to_text(voice_message)
+    except sr.RequestError as err:
+        logging.exception(err)
