@@ -7,3 +7,7 @@ my_lists = InlineKeyboardButton(text="Мои списки", callback_data='go:my
 
 main_menu.insert(new_list)
 main_menu.insert(my_lists)
+
+new_list = InlineKeyboardMarkup()
+list = InlineKeyboardButton(text="Создать новый список", callback_data='go:new_list')
+new_list.insert(list)
