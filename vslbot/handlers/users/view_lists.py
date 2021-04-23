@@ -12,10 +12,10 @@ async def get_my_lists(call: CallbackQuery):
     callback_data = call.data
 
     keyboard_list = InlineKeyboardMarkup(row_width=2)
-    if get_lists(user_id) == "У тебя еще нет списков":
+    if get_lists_names(user_id) == "У тебя еще нет списков":
         await call.message.answer(get_lists_names(user_id), reply_markup=new_list)
     else:
-        for i in get_lists(user_id):
+        for i in get_lists_names(user_id):
             new_button = InlineKeyboardButton(text=f"{i}", callback_data=f'get:{i}:list')
             keyboard_list.insert(new_button)
         await call.message.answer("Все твои списки ниже", reply_markup=keyboard_list)

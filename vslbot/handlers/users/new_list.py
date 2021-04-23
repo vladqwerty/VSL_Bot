@@ -11,16 +11,14 @@ from utils.db_work import new_list
 @dp.callback_query_handler(callback.filter(what="new_list"))
 async def new_list_bot(call: CallbackQuery):
     await call.message.answer("Пожалуйста, введи название твоего списка")
-    await call.message.answer('Пожалуйста, введи продукты, которые ты хочешь добавить в свой список.\nПример:')
-    await call.message.answer('Кефир\nМолоко\nСтейки\nВино')
     await AllStates.list_name.set()
 
 @dp.message_handler(state=AllStates().list_name)
 async def new_values(message: types.Message, state: FSMContext):
-    list_name = message.text.split()
+    list_name = message.text
     await state.update_data(list_name=list_name)
     await message.answer("Отлично! Пожалуйста, введи продукты, которые ты хочешь добавить в свой список.\nПример:")
-    await call.message.answer('Кефир\nМолоко\nСтейки\nВино')
+    await message.answer('Кефир\nМолоко\nСтейки\nВино')
     await AllStates.new_values.set()
 
 @dp.message_handler(state=AllStates().new_values)
