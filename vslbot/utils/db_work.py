@@ -1,13 +1,13 @@
 import json 
 
-def get_user_list(user_id: str, list_name: str) -> list:
-    db = r'here yours db'
+def get_user_list_values(user_id: str, list_name: str) -> list:
+    db = r'C:\Users\ilyah\Все_основное\it\Python\Projects\VSL_Bot-1\vslbot\data\db.json'
     with open(db) as db:
         data = json.load(db)
     return data['users'][user_id]['lists'][list_name]
 
-def get_lists(user_id: str):
-    db = r'here yours db'
+def get_lists_names(user_id: str):
+    db = r'C:\Users\ilyah\Все_основное\it\Python\Projects\VSL_Bot-1\vslbot\data\db.json'
     with open(db) as f:
         data = json.load(f)
     try:
@@ -16,7 +16,7 @@ def get_lists(user_id: str):
         return "У тебя еще нет списков"
 
 def new_list(user_id, list_name: str, values: list) -> None:
-    db = r'here yours db'
+    db = r'C:\Users\ilyah\Все_основное\it\Python\Projects\VSL_Bot-1\vslbot\data\db.json'
     with open(db, "r") as read_file:
         data = json.load(read_file)
     try:
