@@ -10,10 +10,10 @@ def voice_to_text(voice_file: str) -> str:
     voice_message_name = voice_file.split('.')[0]
     dir_name = path.dirname(path.realpath(__file__))
 
-    ff = FFmpeg(path.join(dir_name, "../audio_test/"))
-    ff.convert(path.join(dir_name, f"../audio_test/{voice_file}"), f"{voice_message_name}.wav")
+    ff = FFmpeg(path.join(dir_name, "../data/voice/"))
+    ff.convert(path.join(dir_name, f"../data/voice/{voice_file}"), f"{voice_message_name}.wav")
 
-    audio_file = path.join(path.dirname(path.realpath(__file__)), f"../audio_test/{voice_message_name}.wav")
+    audio_file = path.join(path.dirname(path.realpath(__file__)), f"../data/voice/{voice_message_name}.wav")
 
     r = sr.Recognizer()
 
